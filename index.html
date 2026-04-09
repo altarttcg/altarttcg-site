@@ -1,347 +1,196 @@
-export default function AltArtTCGWebsite() {
-    const navItems = ['Home', 'Events', 'Shop', 'Gallery', 'FAQ', 'Visit'];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alt Art TCG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-animated"></div>
 
-  const weeklyEvents = [
-    { day: 'Sunday', title: 'Flesh and Blood Armory', time: '7:00 PM', price: '$10', image: 'Flesh and Blood', link: 'https://gem.fabtcg.com/gem/join/?query=sticky-boa' },
-    { day: 'Monday', title: 'Magic: The Gathering', time: '5:30 PM', price: 'FREE', image: 'Magic', link: 'https://discord.gg/yourlink' },
-    { day: 'Monday', title: 'Flesh and Blood Pit Fight', time: '8:00 PM', price: 'FREE', image: 'Pit Fight', link: 'https://gem.fabtcg.com/gem/join/?query=rustling-starfish' },
-    { day: 'Tuesday', title: 'Gundam Card Game', time: '6:30 PM', price: '$6', image: 'Gundam', link: 'https://bandai-tcg-plus.com' },
-    { day: 'Wednesday', title: 'Grand Archive', time: '5:00 PM', price: '$6', image: 'Grand Archive', link: 'https://discord.gg/yourlink' },
-    { day: 'Wednesday', title: 'One Piece Card Game', time: '7:00 PM', price: '$8', image: 'One Piece', link: 'https://bandai-tcg-plus.com' },
-    { day: 'Thursday', title: 'Yu-Gi-Oh!', time: '6:00 PM', price: '$5', image: 'Yu-Gi-Oh', link: 'https://neuron.konami.net' },
-    { day: 'Thursday', title: 'Riftbound Nexus Night', time: '7:00 PM', price: '$6', image: 'Riftbound', link: 'https://discord.gg/yourlink' },
-    { day: 'Friday', title: 'Union Arena', time: '6:30 PM', price: '$6', image: 'Union Arena', link: 'https://bandai-tcg-plus.com' },
-    { day: 'Saturday', title: 'Shadowverse', time: '6:30 PM', price: '$6', image: 'Shadowverse', link: 'https://discord.gg/yourlink' },
-    { day: 'Saturday', title: 'Weiss Schwarz', time: '8:30 PM', price: '$6', image: 'Weiss Schwarz', link: 'https://discord.gg/yourlink' },
-  ];
-
-  const specialEvents = [
-    { date: 'April 13', title: 'Flesh and Blood Super Slam Draft', time: '8:00 PM', price: '$15', image: 'Flesh and Blood', link: 'https://fabtcg.com/locator/alt-art-tcg/' },
-    { date: 'May 7', title: 'Riftbound Pre Release Event', time: '7:00 PM', price: '$29.99', image: 'Riftbound', link: 'https://discord.gg/yourlink' },
-    { date: 'June 2', title: 'Flesh and Blood Omens Pre Release', time: '7:00 PM', price: '$46.99', image: 'Flesh and Blood', link: 'https://fabtcg.com/locator/alt-art-tcg/' },
-    { date: 'June 10', title: 'One Piece OP16 Pre Release Event', time: '6:30 PM', price: '$30', image: 'One Piece', link: 'https://bandai-tcg-plus.com' },
-    { date: 'June 11', title: 'Riftbound Skirmish', time: '7:00 PM', price: '$9.99', image: 'Riftbound', link: 'https://discord.gg/yourlink' },
-    { date: 'July 16', title: 'Riftbound Skirmish', time: '7:00 PM', price: '$9.99', image: 'Riftbound', link: 'https://discord.gg/yourlink' },
-    { date: 'July 18', title: 'Shadowverse Neometropolis Release', time: '6:00 PM', price: '$49.99', image: 'Shadowverse', link: 'https://discord.gg/yourlink' },
-    { date: 'November 3', title: 'Gundam GD06 Release Event', time: '6:30 PM', price: '$34.99', image: 'Gundam', link: 'https://bandai-tcg-plus.com' },
-  ];
-
-  const faq = [
-    { q: 'Do you host weekly events?', a: 'Yep. We run weekly events for multiple TCGs throughout the week.' },
-    { q: 'Can beginners come in?', a: 'Absolutely. New players are welcome.' },
-    { q: 'Do you sell sealed product?', a: 'Yes. We carry a growing selection of sealed product and accessories.' },
-    { q: 'How do I stay updated?', a: 'Join our Discord and follow our socials for restocks, events, and announcements.' },
-  ];
-
-  function gameCardStyle(game) {
-    const map = {
-      'Magic': 'from-orange-700 via-red-900 to-black',
-      'Flesh and Blood': 'from-red-700 via-zinc-900 to-black',
-      'Pit Fight': 'from-red-800 via-amber-950 to-black',
-      'Gundam': 'from-blue-700 via-slate-900 to-black',
-      'Grand Archive': 'from-cyan-600 via-zinc-900 to-black',
-      'One Piece': 'from-yellow-600 via-orange-900 to-black',
-      'Yu-Gi-Oh': 'from-purple-700 via-indigo-950 to-black',
-      'Riftbound': 'from-sky-600 via-slate-950 to-black',
-      'Union Arena': 'from-emerald-600 via-zinc-900 to-black',
-      'Shadowverse': 'from-fuchsia-600 via-violet-950 to-black',
-      'Weiss Schwarz': 'from-zinc-300 via-zinc-700 to-black',
-    };
-    return map[game] || 'from-zinc-700 via-zinc-900 to-black';
-  }
-
-  return (
-    <div className="relative min-h-screen overflow-hidden bg-[#0b0b10] text-zinc-100 antialiased">
-      <style>{`
-        h1, h2, h3, h4, h5, h6, .display, nav a { font-family: 'Cinzel', serif; }
-        body, p, span, li, a, button, div { font-family: 'Inter', sans-serif; }
-        .display { font-family: 'Cinzel', serif !important; }
-      `}</style>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" />
-      <style>{`@keyframes bgShift {0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;}}`}</style>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-15"
-        style={{
-          background: 'linear-gradient(120deg, #0b0b10, #1a1030, #0b0b10)',
-          backgroundSize: '200% 200%',
-          animation: 'bgShift 18s ease infinite',
-        }}
-      />
-
-      <header className="sticky top-0 z-50 border-b border-zinc-800 bg-[#0b0b10]/90 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-          <div>
-            <p className="text-lg font-black tracking-wide text-white">ALT ART TCG</p>
-            <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">Not Your Grandpa's Game Shop</p>
-          </div>
-
-          <nav className="hidden gap-6 text-sm text-zinc-300 md:flex">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="rounded-lg px-2 py-1 transition hover:bg-white/5 hover:text-violet-300"
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </header>
-
-      <section id="home" className="relative overflow-hidden border-b border-zinc-800">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.14),_transparent_40%),linear-gradient(to_bottom,_#0b0b10,_#12121a)]" />
-        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-violet-300">Muncie, Indiana</p>
-              <div className="display mt-4 text-5xl font-black uppercase tracking-tight sm:text-7xl bg-gradient-to-r from-violet-400 via-purple-300 to-violet-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(168,85,247,0.35)]">
-                ALT ART TCG
-              </div>
-              <p className="mt-3 text-xs uppercase tracking-[0.4em] text-violet-300/70 sm:text-sm">
-                Not Your Grandpa's Game Shop
-              </p>
-              <h1 className="mt-4 text-3xl font-semibold uppercase tracking-[0.15em] text-zinc-300 sm:text-4xl">
-                Play. Trade. Collect.
-              </h1>
-              <p className="mt-5 max-w-xl text-base text-zinc-400">
-                Weekly events, fresh product, and a shop built for players, collectors, and curious newcomers.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#events" className="rounded-2xl bg-violet-600 px-5 py-3 text-sm font-semibold text-white shadow-[0_0_15px_rgba(168,85,247,0.2)] transition hover:bg-violet-500 hover:shadow-[0_0_25px_rgba(168,85,247,0.35)]">
-                  View Events
-                </a>
-                <a href="#shop" className="rounded-2xl border border-zinc-700 px-5 py-3 text-sm font-semibold text-zinc-200 transition hover:border-violet-400 hover:text-violet-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.18)]">
-                  Shop Product
-                </a>
-                <a href="#visit" className="rounded-2xl border border-zinc-700 px-5 py-3 text-sm font-semibold text-zinc-200 transition hover:border-violet-400 hover:text-violet-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.18)]">
-                  Visit Store
-                </a>
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {['New Arrivals', 'Upcoming Events', 'Recent Pulls', 'Learn to Play'].map((item) => (
-                <div key={item} className="rounded-3xl border border-zinc-800 bg-zinc-900/70 p-6 shadow-lg shadow-black/20 transition hover:shadow-[0_0_20px_rgba(168,85,247,0.12)]">
-                  <p className="text-sm font-semibold text-white">{item}</p>
-                  <p className="mt-2 text-sm text-zinc-400">Add real links, photos, or featured items here.</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="events" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-sm uppercase tracking-[0.25em] text-violet-300">Events</p>
-            <h2 className="mt-2 text-3xl font-bold text-white">Play this week or jump into something special</h2>
-          </div>
-          <div className="flex gap-2">
-            <a href="#weekly-events" className="rounded-2xl bg-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-[0_0_15px_rgba(168,85,247,0.2)] transition hover:bg-violet-500 hover:shadow-[0_0_25px_rgba(168,85,247,0.35)]">Weekly Events</a>
-            <a href="#special-events" className="rounded-2xl border border-zinc-700 px-4 py-2 text-sm font-semibold text-zinc-300 transition hover:border-violet-400 hover:text-violet-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.18)]">Special Events</a>
-          </div>
-        </div>
-
-        <div id="weekly-events" className="mt-8 scroll-mt-24">
-          <h3 className="mb-4 text-lg font-semibold text-white">Weekly Recurring Events</h3>
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-            {weeklyEvents.map((event) => {
-              return (
-                <div
-                  key={`${event.day}-${event.title}`}
-                  className="group cursor-default overflow-hidden rounded-[1.75rem] border border-zinc-800 bg-zinc-900/80 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:border-violet-400/40 hover:shadow-[0_0_25px_rgba(168,85,247,0.25)]"
-                >
-                  <div className={`relative aspect-[3/2] overflow-hidden bg-gradient-to-br ${gameCardStyle(event.image)}`}>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                    <div className="absolute left-3 top-3 rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-zinc-200">
-                      Weekly
-                    </div>
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <p className="text-lg font-bold text-white drop-shadow">{event.image}</p>
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.2em] text-violet-300">{event.day}</p>
-                        <h4 className="mt-2 text-lg font-semibold text-white">{event.title}</h4>
-                      </div>
-                      <div className="flex flex-col items-end gap-1">
-                        <div className="rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-1 text-xs text-cyan-300">
-                          {event.time}
-                        </div>
-                        <div className="text-xs font-semibold text-violet-300">
-                          {event.price} Entry
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <p className="text-xs text-zinc-400">Weekly event</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div id="special-events" className="mt-12 scroll-mt-24">
-          <div className="mb-4 flex items-center justify-between gap-3">
-            <h3 className="text-lg font-semibold text-white">Special Events</h3>
-            <a href="#gallery" className="text-sm text-zinc-400 transition hover:text-violet-300">View all upcoming</a>
-          </div>
-          <div className="grid gap-4 lg:grid-cols-3">
-            {specialEvents.map((event) => (
-              <div
-                key={`${event.date}-${event.title}`}
-                className="cursor-default rounded-3xl border border-zinc-800 bg-zinc-900/70 p-5 h-full"
-              >
-                <div className={`relative mb-4 flex aspect-[3/2] items-end overflow-hidden rounded-2xl bg-gradient-to-br ${gameCardStyle(event.image)} p-4`}>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                  <span className="relative rounded-xl border border-zinc-700 bg-black/35 px-3 py-1 text-xs uppercase tracking-[0.2em] text-zinc-300">
-                    {event.image}
-                  </span>
-                </div>
-                <div className="flex flex-col justify-between gap-5 min-h-[120px]">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-violet-300">{event.date}</p>
-                    <h4 className="mt-3 text-base font-semibold leading-snug text-white">{event.title}</h4>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-sm text-cyan-300">{event.time}</p>
-                    <p className="shrink-0 text-xs font-semibold text-violet-300">{event.price} Entry</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="shop" className="mx-auto max-w-7xl px-6 py-4 lg:px-10">
-        <div className="grid gap-6 lg:grid-cols-3">
-          <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-7 transition hover:shadow-[0_0_20px_rgba(168,85,247,0.12)]">
-            <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">Shop</p>
-            <h3 className="mt-2 text-xl font-bold text-white">Sealed Product</h3>
-            <p className="mt-3 text-sm text-zinc-400">Highlight what is currently in stock or direct people to your online shop.</p>
-          </div>
-          <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-7 transition hover:shadow-[0_0_20px_rgba(168,85,247,0.12)]">
-            <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">Community</p>
-            <h3 className="mt-2 text-xl font-bold text-white">Recent Pulls</h3>
-            <p className="mt-3 text-sm text-zinc-400">Use this space for customer hits, event recaps, or gallery images.</p>
-          </div>
-          <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-7 transition hover:shadow-[0_0_20px_rgba(168,85,247,0.12)]">
-            <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">New Here?</p>
-            <h3 className="mt-2 text-xl font-bold text-white">Learn to Play</h3>
-            <p className="mt-3 text-sm text-zinc-400">A simple beginner section makes the shop feel inviting without a wall of text.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="gallery" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <p className="text-sm uppercase tracking-[0.25em] text-violet-300">Gallery</p>
-            <h2 className="mt-2 text-3xl font-bold text-white">Photos, pulls, and event highlights</h2>
-          </div>
-        </div>
-
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {[1, 2, 3, 4].map((item) => (
-            <div key={item} className="aspect-[4/5] rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-950 p-4 transition hover:shadow-[0_0_20px_rgba(168,85,247,0.12)]">
-              <div className="flex h-full items-end rounded-2xl border border-dashed border-zinc-700 p-4 text-sm text-zinc-500">
-                Photo slot {item}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="faq" className="mx-auto max-w-7xl px-6 py-4 lg:px-10">
-        <div className="rounded-[2rem] border border-zinc-800 bg-zinc-900/70 p-8">
-          <p className="text-sm uppercase tracking-[0.25em] text-violet-300">FAQ</p>
-          <h2 className="mt-2 text-3xl font-bold text-white">Quick Answers</h2>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {faq.map((item) => (
-              <div key={item.q} className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-5 transition hover:shadow-[0_0_18px_rgba(168,85,247,0.1)]">
-                <h3 className="font-semibold text-white">{item.q}</h3>
-                <p className="mt-2 text-sm text-zinc-400">{item.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="visit" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-[2rem] border border-zinc-800 bg-gradient-to-br from-zinc-900 to-black p-8">
-            <p className="text-sm uppercase tracking-[0.25em] text-violet-300">Visit Us</p>
-            <h2 className="mt-2 text-3xl font-bold text-white">Store Info</h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-zinc-800 p-5">
-                <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">Location</p>
-                <p className="mt-2 text-white">1605 N Granville Ave<br />Muncie, Indiana</p>
-              </div>
-              <div className="rounded-2xl border border-zinc-800 p-5">
-                <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">Hours</p>
-                <div className="mt-3 grid grid-cols-[3.2rem_1fr] gap-x-3 gap-y-1 text-sm text-white">
-                  <p className="text-zinc-400">Sun</p><p>12pm - 9pm</p>
-                  <p className="text-zinc-400">Mon</p><p>5pm - 9pm</p>
-                  <p className="text-zinc-400">Tue</p><p>5pm - 9pm</p>
-                  <p className="text-zinc-400">Wed</p><p>12pm - 9pm</p>
-                  <p className="text-zinc-400">Thu</p><p>12pm - 9pm</p>
-                  <p className="text-zinc-400">Fri</p><p>12pm - 9pm</p>
-                  <p className="text-zinc-400">Sat</p><p>12pm - 9pm</p>
-                </div>
-              </div>
-              <div className="rounded-2xl border border-zinc-800 p-5">
-                <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">Contact</p>
-                <div className="mt-3 space-y-2 text-sm text-white">
-                  <p>765-717-1373</p>
-                </div>
-              </div>
-              <div className="rounded-2xl border border-zinc-800 p-5">
-                <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">Socials</p>
-                <div className="mt-3 flex flex-col gap-2 text-sm text-white">
-                  <a href="https://discord.gg/J9wxjJy6Tn" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-zinc-700 px-3 py-2 text-zinc-200 transition hover:border-violet-400 hover:text-violet-300 hover:shadow-[0_0_18px_rgba(168,85,247,0.18)]">
-                    <span aria-hidden="true">💬</span> Discord
-                  </a>
-                  <a href="https://www.facebook.com/altarttcg" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-zinc-700 px-3 py-2 text-zinc-200 transition hover:border-violet-400 hover:text-violet-300 hover:shadow-[0_0_18px_rgba(168,85,247,0.18)]">
-                    <span aria-hidden="true">🌐</span> Facebook
-                  </a>
-                  <a href="https://instagram.com/altart.tcg" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-zinc-700 px-3 py-2 text-zinc-200 transition hover:border-violet-400 hover:text-violet-300 hover:shadow-[0_0_18px_rgba(168,85,247,0.18)]">
-                    <span aria-hidden="true">📸</span> Instagram
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-[2rem] border border-zinc-800 bg-zinc-900 p-8">
-            <p className="text-sm uppercase tracking-[0.25em] text-violet-300">Next Steps</p>
-            <h3 className="mt-2 text-2xl font-bold text-white">What to plug in next</h3>
-            <div className="mt-6 space-y-3 text-sm text-zinc-400">
-              <p>• Replace placeholders with your real links and store info</p>
-              <p>• Drop in photos from tournaments and pulls</p>
-              <p>• Add online shopping or featured products</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      
-
-      <footer className="border-t border-zinc-800 bg-black/30">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-8 text-sm text-zinc-500 lg:flex-row lg:items-center lg:justify-between lg:px-10">
-          <p>© Alt Art TCG</p>
-          <p>Not Your Grandpa's Game Shop</p>
-        </div>
-      </footer>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div>
+        <p class="brand-small">ALT ART TCG</p>
+        <p class="tagline-small">Not Your Grandpa's Game Shop</p>
+      </div>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#events">Events</a>
+        <a href="#shop">Shop</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#faq">FAQ</a>
+        <a href="#visit">Visit</a>
+      </nav>
     </div>
-  );
-}
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Muncie, Indiana</p>
+        <div class="display hero-title">ALT ART TCG</div>
+        <p class="hero-tagline">Not Your Grandpa's Game Shop</p>
+        <h1>Play. Trade. Collect.</h1>
+        <p class="hero-copy">Weekly events, fresh product, and a shop built for players, collectors, and curious newcomers.</p>
+        <div class="button-row">
+          <a href="#events" class="btn btn-primary">View Events</a>
+          <a href="#shop" class="btn btn-secondary">Shop Product</a>
+          <a href="#visit" class="btn btn-secondary">Visit Store</a>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card"><p class="feature-title">New Arrivals</p><p>Add real links, photos, or featured items here.</p></div>
+        <div class="feature-card"><p class="feature-title">Upcoming Events</p><p>Add real links, photos, or featured items here.</p></div>
+        <div class="feature-card"><p class="feature-title">Recent Pulls</p><p>Add real links, photos, or featured items here.</p></div>
+        <div class="feature-card"><p class="feature-title">Learn to Play</p><p>Add real links, photos, or featured items here.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Events</p>
+          <h2>Play this week or jump into something special</h2>
+        </div>
+        <div class="button-row small-gap">
+          <a href="#weekly-events" class="btn btn-primary small">Weekly Events</a>
+          <a href="#special-events" class="btn btn-secondary small">Special Events</a>
+        </div>
+      </div>
+
+      <div id="weekly-events" class="subsection">
+        <h3>Weekly Recurring Events</h3>
+        <div class="event-grid">
+          <div class="event-card"><div class="event-art art-fab"><span>Weekly</span><strong>Flesh and Blood</strong></div><div class="event-body"><div class="event-top"><div><p class="event-day">Sunday</p><h4>Flesh and Blood Armory</h4></div><div class="event-meta"><div class="time-pill">7:00 PM</div><div class="price">$10 Entry</div></div></div><p class="event-note">Weekly event</p></div></div>
+          <div class="event-card"><div class="event-art art-magic"><span>Weekly</span><strong>Magic</strong></div><div class="event-body"><div class="event-top"><div><p class="event-day">Monday</p><h4>Magic: The Gathering</h4></div><div class="event-meta"><div class="time-pill">5:30 PM</div><div class="price">FREE Entry</div></div></div><p class="event-note">Weekly event</p></div></div>
+          <div class="event-card"><div class="event-art art-pit"><span>Weekly</span><strong>Pit Fight</strong></div><div class="event-body"><div class="event-top"><div><p class="event-day">Monday</p><h4>Flesh and Blood Pit Fight</h4></div><div class="event-meta"><div class="time-pill">8:00 PM</div><div class="price">FREE Entry</div></div></div><p class="event-note">Weekly event</p></div></div>
+          <div class="event-card"><div class="event-art art-gundam"><span>Weekly</span><strong>Gundam</strong></div><div class="event-body"><div class="event-top"><div><p class="event-day">Tuesday</p><h4>Gundam Card Game</h4></div><div class="event-meta"><div class="time-pill">6:30 PM</div><div class="price">$6 Entry</div></div></div><p class="event-note">Weekly event</p></div></div>
+          <div class="event-card"><div class="event-art art-ga"><span>Weekly</span><strong>Grand Archive</strong></div><div class="event-body"><div class="event-top"><div><p class="event-day">Wednesday</p><h4>Grand Archive</h4></div><div class="event-meta"><div class="time-pill">5:00 PM</div><div class="price">$6 Entry</div></div></div><p class="event-note">Weekly event</p></div></div>
+          <div class="event-card"><div class="event-art art-onepiece"><span>Weekly</span><strong>One Piece</strong></div><div class="event-body"><div class="event-top"><div><p class="event-day">Wednesday</p><h4>One Piece Card Game</h4></div><div class="event-meta"><div class="time-pill">7:00 PM</div><div class="price">$8 Entry</div></div></div><p class="event-note">Weekly event</p></div></div>
+          <div class="event-card"><div class="event-art art-ygo"><span>Weekly</span><strong>Yu-Gi-Oh</strong></div><div class="event-body"><div class="event-top"><div><p class="event-day">Thursday</p><h4>Yu-Gi-Oh!</h4></div><div class="event-meta"><div class="time-pill">6:00 PM</div><div class="price">$5 Entry</div></div></div><p class="event-note">Weekly event</p></div></div>
+          <div class="event-card"><div class="event-art art-rift"><span>Weekly</span><strong>Riftbound</strong></div><div class="event-body"><div class="event-top"><div><p class="event-day">Thursday</p><h4>Riftbound Nexus Night</h4></div><div class="event-meta"><div class="time-pill">7:00 PM</div><div class="price">$6 Entry</div></div></div><p class="event-note">Weekly event</p></div></div>
+          <div class="event-card"><div class="event-art art-union"><span>Weekly</span><strong>Union Arena</strong></div><div class="event-body"><div class="event-top"><div><p class="event-day">Friday</p><h4>Union Arena</h4></div><div class="event-meta"><div class="time-pill">6:30 PM</div><div class="price">$6 Entry</div></div></div><p class="event-note">Weekly event</p></div></div>
+          <div class="event-card"><div class="event-art art-shadow"><span>Weekly</span><strong>Shadowverse</strong></div><div class="event-body"><div class="event-top"><div><p class="event-day">Saturday</p><h4>Shadowverse</h4></div><div class="event-meta"><div class="time-pill">6:30 PM</div><div class="price">$6 Entry</div></div></div><p class="event-note">Weekly event</p></div></div>
+          <div class="event-card"><div class="event-art art-weiss"><span>Weekly</span><strong>Weiss Schwarz</strong></div><div class="event-body"><div class="event-top"><div><p class="event-day">Saturday</p><h4>Weiss Schwarz</h4></div><div class="event-meta"><div class="time-pill">8:30 PM</div><div class="price">$6 Entry</div></div></div><p class="event-note">Weekly event</p></div></div>
+        </div>
+      </div>
+
+      <div id="special-events" class="subsection">
+        <div class="section-head compact">
+          <h3>Special Events</h3>
+          <a href="#gallery" class="minor-link">View all upcoming</a>
+        </div>
+        <div class="event-grid special-grid">
+          <div class="event-card special-card"><div class="event-art art-magic"><strong>Magic</strong></div><div class="special-body"><div><p class="event-day">April 20</p><h4>Magic: The Gathering Strixhaven Prerelease</h4></div><div class="special-meta"><p>5:30 PM</p><p>$35 Entry</p></div></div></div>
+          <div class="event-card special-card"><div class="event-art art-fab"><strong>Flesh and Blood</strong></div><div class="special-body"><div><p class="event-day">April 13</p><h4>Flesh and Blood Super Slam Draft</h4></div><div class="special-meta"><p>8:00 PM</p><p>$15 Entry</p></div></div></div>
+          <div class="event-card special-card"><div class="event-art art-rift"><strong>Riftbound</strong></div><div class="special-body"><div><p class="event-day">May 7</p><h4>Riftbound Pre Release Event</h4></div><div class="special-meta"><p>7:00 PM</p><p>$29.99 Entry</p></div></div></div>
+          <div class="event-card special-card"><div class="event-art art-fab"><strong>Flesh and Blood</strong></div><div class="special-body"><div><p class="event-day">June 2</p><h4>Flesh and Blood Omens Pre Release</h4></div><div class="special-meta"><p>7:00 PM</p><p>$46.99 Entry</p></div></div></div>
+          <div class="event-card special-card"><div class="event-art art-onepiece"><strong>One Piece</strong></div><div class="special-body"><div><p class="event-day">June 10</p><h4>One Piece OP16 Pre Release Event</h4></div><div class="special-meta"><p>6:30 PM</p><p>$30 Entry</p></div></div></div>
+          <div class="event-card special-card"><div class="event-art art-rift"><strong>Riftbound</strong></div><div class="special-body"><div><p class="event-day">June 11</p><h4>Riftbound Skirmish</h4></div><div class="special-meta"><p>7:00 PM</p><p>$9.99 Entry</p></div></div></div>
+          <div class="event-card special-card"><div class="event-art art-rift"><strong>Riftbound</strong></div><div class="special-body"><div><p class="event-day">July 16</p><h4>Riftbound Skirmish</h4></div><div class="special-meta"><p>7:00 PM</p><p>$9.99 Entry</p></div></div></div>
+          <div class="event-card special-card"><div class="event-art art-shadow"><strong>Shadowverse</strong></div><div class="special-body"><div><p class="event-day">July 18</p><h4>Shadowverse Neometropolis Release</h4></div><div class="special-meta"><p>6:00 PM</p><p>$49.99 Entry</p></div></div></div>
+          <div class="event-card special-card"><div class="event-art art-gundam"><strong>Gundam</strong></div><div class="special-body"><div><p class="event-day">November 3</p><h4>Gundam GD06 Release Event</h4></div><div class="special-meta"><p>6:30 PM</p><p>$34.99 Entry</p></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop" class="section">
+    <div class="container triple-grid">
+      <div class="info-card"><p class="eyebrow muted">Shop</p><h3>Sealed Product</h3><p>Highlight what is currently in stock or direct people to your online shop.</p></div>
+      <div class="info-card"><p class="eyebrow muted">Community</p><h3>Recent Pulls</h3><p>Use this space for customer hits, event recaps, or gallery images.</p></div>
+      <div class="info-card"><p class="eyebrow muted">New Here?</p><h3>Learn to Play</h3><p>A simple beginner section makes the shop feel inviting without a wall of text.</p></div>
+    </div>
+  </section>
+
+  <section id="gallery" class="section">
+    <div class="container">
+      <p class="eyebrow">Gallery</p>
+      <h2>Photos, pulls, and event highlights</h2>
+      <div class="gallery-grid">
+        <div class="gallery-card">Photo slot 1</div>
+        <div class="gallery-card">Photo slot 2</div>
+        <div class="gallery-card">Photo slot 3</div>
+        <div class="gallery-card">Photo slot 4</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="container panel">
+      <p class="eyebrow">FAQ</p>
+      <h2>Quick Answers</h2>
+      <div class="faq-grid">
+        <div class="faq-card"><h3>Do you host weekly events?</h3><p>Yep. We run weekly events for multiple TCGs throughout the week.</p></div>
+        <div class="faq-card"><h3>Can beginners come in?</h3><p>Absolutely. New players are welcome.</p></div>
+        <div class="faq-card"><h3>Do you sell sealed product?</h3><p>Yes. We carry a growing selection of sealed product and accessories.</p></div>
+        <div class="faq-card"><h3>How do I stay updated?</h3><p>Join our Discord and follow our socials for restocks, events, and announcements.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="section">
+    <div class="container visit-grid">
+      <div class="panel visit-panel">
+        <p class="eyebrow">Visit Us</p>
+        <h2>Store Info</h2>
+        <div class="visit-cards">
+          <div class="mini-card">
+            <p class="mini-label">Location</p>
+            <p>1605 N Granville Ave<br>Muncie, Indiana</p>
+          </div>
+          <div class="mini-card">
+            <p class="mini-label">Hours</p>
+            <div class="hours">
+              <span>Sun</span><span>12pm - 9pm</span>
+              <span>Mon</span><span>5pm - 9pm</span>
+              <span>Tue</span><span>5pm - 9pm</span>
+              <span>Wed</span><span>12pm - 9pm</span>
+              <span>Thu</span><span>12pm - 9pm</span>
+              <span>Fri</span><span>12pm - 9pm</span>
+              <span>Sat</span><span>12pm - 9pm</span>
+            </div>
+          </div>
+          <div class="mini-card">
+            <p class="mini-label">Contact</p>
+            <p>765-717-1373</p>
+          </div>
+          <div class="mini-card">
+            <p class="mini-label">Socials</p>
+            <div class="socials">
+              <a href="https://discord.gg/J9wxjJy6Tn" target="_blank" rel="noopener noreferrer">💬 Discord</a>
+              <a href="https://www.facebook.com/altarttcg" target="_blank" rel="noopener noreferrer">🌐 Facebook</a>
+              <a href="https://instagram.com/altart.tcg" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel next-panel">
+        <p class="eyebrow">Next Steps</p>
+        <h2>What to plug in next</h2>
+        <div class="next-steps">
+          <p>• Replace placeholders with your real links and store info</p>
+          <p>• Drop in photos from tournaments and pulls</p>
+          <p>• Add online shopping or featured products</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© Alt Art TCG</p>
+      <p>Not Your Grandpa's Game Shop</p>
+    </div>
+  </footer>
+</body>
+</html>
